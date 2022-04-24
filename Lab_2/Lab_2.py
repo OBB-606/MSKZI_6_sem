@@ -221,6 +221,8 @@ def executor():
         get_input_file_binary_format(list_of_bytes)
         generate_key_for_disposable_notepad(list_of_bytes)
         disposable_notepad(list_of_bytes, filename)
+        lob_2 = read_files_with_binary_mode("output/enc/1.docx")
+        print(f"{len(list_of_bytes)}, {len(lob_2)}")
         print(f"time: {round(time.time() - start, 5)} seconds")
 
 
