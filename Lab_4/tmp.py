@@ -13,3 +13,29 @@ f = 18 + 8*2 + 3*3 + 4*4 + 5
 lst = [1,2,3,4,5,999,7,8,9]
 new  = np.array(lst).reshape(3,3)
 print(np.linalg.det(new))
+
+import time
+from progress.bar import IncrementalBar
+
+mylist = [1,2,3,4,5,6,7,8]
+
+bar = IncrementalBar('Countdown', max = len(mylist))
+
+for item in mylist:
+    bar.next()
+    # time.sleep(1)
+
+bar.finish()
+
+import time
+from tqdm import tqdm
+
+mylist = [1,2,3,4,5,6,7,8]
+
+for i in tqdm(mylist):
+    time.sleep(1)
+
+
+
+
+

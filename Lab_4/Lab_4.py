@@ -4,7 +4,7 @@ from math import log2
 import numpy as np
 from zipfile import ZipFile
 import time
-
+from tqdm import tqdm
 
 def read_file_with_binary_mode(filename: str):
     with open(f"{filename}", "rb") as read_file:
@@ -32,8 +32,7 @@ def count_value_bits(list_ob_bits: list): # рассчитывает часто�
 def count_value_bytes(list_of_bytes):
     tmp = dict(Counter(list_of_bytes))
     dict_freq_temp: dict = {}
-    dict_final: dict = {}
-    for i in tmp:
+    for i in tqdm(tmp):
             dict_freq_temp[i] = tmp[i] / len(list_of_bytes)
     return dict(sorted(dict_freq_temp.items(), key = lambda x: x[0])) # сортировка по ключу
 
@@ -63,7 +62,7 @@ def count_series(list_of_bits: str):
             len_series_1 += "1"
         else:
             break
-    for i in range(len(list_of_counts_series_0)):
+    for i in tqdm(range(len(list_of_counts_series_0))):
         if list_of_counts_series_0[i] > list_of_counts_series_1[i] and (list_of_counts_series_0[i] != 0 and list_of_counts_series_1[i] != 0):
             max_len_series_list.append(list_of_counts_series_0[i])
             max_len = i + 1 # так как нужен не индекс, а количество
@@ -141,7 +140,7 @@ def main():
         table.field_names = ['length', 'count']
         j = 1
         formula = 0
-        for i in range(len(res[1])):
+        for i in tqdm(range(len(res[1]))):
             table.add_row([i, res[1][i]])
             # formula += j * res[1][i]
             j += 1
